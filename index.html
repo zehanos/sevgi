@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senin İçin 💖</title>
+<style>
+    body {
+        margin: 0;
+        background-color: black;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        margin-top: 30px;
+        font-size: 2.5em;
+        color: #ff99ff;
+    }
+
+    p {
+        font-size: 1.3em;
+        margin: 10px auto;
+        max-width: 800px;
+        line-height: 1.5;
+    }
+
+    /* Tarih hatırlatma efekti */
+    .special-date {
+        font-size: 1.5em;
+        color: #ff99ff;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeIn 2s ease forwards;
+        margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Albüm mesajı */
+    .album-message {
+        font-size: 1.2em;
+        color: #ffccff;
+        margin-top: 40px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Albüm */
+    .slideshow-container {
+        position: relative;
+        max-width: 800px;
+        margin: 30px auto;
+    }
+
+    .slides {
+        display: none;
+        animation: zoomEffect 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoomEffect {
+        from { transform: scale(1); }
+        to { transform: scale(1.05); }
+    }
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+        border: 3px solid #ff99ff;
+        box-shadow: 0 0 20px #ff99ff;
+    }
+
+    /* Önceki/sonraki butonlar */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 10px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(255, 153, 255, 0.8);
+    }
+
+    /* Müzik butonu */
+    .music-btn {
+        background-color: #ff99ff;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .music-btn:hover {
+        background-color: #ff66cc;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<!-- Giriş Mesajı -->
+<h1>💖 Sevgilim, Sen Benim Her Şeyimsin 💖</h1>
+<p>Seninle geçen her an, hayatımın en değerli anı oldu.<br>
+Ne olursa olsun kalbim hep seninle, sana bağlı.<br>
+Sana incittiysem, bunu telafi etmek için ömrüm var.<br>
+Gözlerindeki ışık, hayatımın en güzel rengi. 💜</p>
+
+<p>Kalbim, ruhum, tüm benliğim sana ait...<br>
+Her nefesimde adını fısıldıyor içim.<br>
+Bir daha asla seni üzmek istemem.<br>
+Sonsuza kadar seninle olmak istiyorum... 🌸</p>
+
+<!-- Müzik butonu -->
+<button class="music-btn" onclick="playMusic()">🎵 Romantik Müziği Çal</button>
+<audio id="bg-music" src="muzik.mp3"></audio>
+
+<!-- Albüm mesajı -->
+<div class="album-message">
+    Seni hâlâ çok seviyorum, inşallah bu zor günleri atlatırız ve tekrardan mutlu, huzurlu günlerimize döneriz.<br>
+    Ben hâlâ umutluyum...
+</div>
+
+<!-- Fotoğraf Albümü -->
+<div class="slideshow-container">
+    <div class="slides"><img src="foto1.jpg" alt="Foto 1"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto1.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+      Bu fotoğrafı o gün atacaktım nasip olmadı... 
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto2.jpg" alt="Foto 2"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto2.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+      Hani sana söylemiştim ya daha ilk web sitesi yaptığımda sana hep böyle bakacağım diye, evet. Bakacağım... 💖
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto3.jpg" alt="Foto 3"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto3.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+      Damat 🥺
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto4.jpg" alt="Foto 4"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto4.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+      Tostçu Yaşar günümüz, ıslak ama bir o kadar özel ve güzel gün...
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto5.jpg" alt="Foto 5"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto5.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+      İlk sarıldığın gün, çok heyecanlanmıştım...
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto6.jpg" alt="Foto 6"></div>
+    <div class="slides"><img src="foto7.jpg" alt="Foto 7"></div>
+    <style>
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: pink;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+</style>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="foto7.jpg" alt="Fotoğraf">
+    </div>
+    <div class="flip-card-back">
+     Hazırlıksız yakalamıştın beni hanımefendi ama yine de çok güzel bir gündü, her zamanki gibi.
+    </div>
+  </div>
+</div>
+
+    <div class="slides"><img src="foto8.jpg" alt="Foto 8"></div>
+    <div class="slides"><img src="foto9.jpg" alt="Foto 9"></div>
+    <div class="slides"><img src="foto10.jpg" alt="Foto 10"></div>
+    <div class="slides"><img src="foto11.jpg" alt="Foto 11"></div>
+    <div class="slides"><img src="foto12.jpg" alt="Foto 12"></div>
+    <div class="slides"><img src="foto13.jpg" alt="Foto 13"></div>
+
+    <!-- İleri/Geri butonları -->
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+    // Müzik oynatma
+    function playMusic() {
+        document.getElementById("bg-music").play();
+    }
+
+    // Albüm slayt gösterisi
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
+
+</body>
+</html>
+<!-- Şiirler Bölümü -->
+<div style="text-align:center; margin-top: 50px;">
+    <h2>🎙️ Senin İçin Okuduğum Şiirler</h2>
+
+    <!-- 1. Şiir -->
+    <div style="margin-bottom: 20px;">
+        <video id="siir1" width="320" height="240" style="border-radius: 10px; cursor: pointer;">
+            <source src="siir1.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
+        <p><b>💌 İlk şiir</b></p>
+    </div>
+
+    <!-- 2. Şiir -->
+    <div>
+        <video id="siir2" width="320" height="240" style="border-radius: 10px; cursor: pointer;">
+            <source src="siir2.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
+        <p><b>💌 İkinci şiir"</b></p>
+    </div>
+
+  <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Video</title>
+</head>
+<body>
+
+  <h1>Yaptığım hata sonrası hakkım mıdır 😂😁😂</h1>
+
+  <video width="520" height="360" controls>
+    <source src="siir.mp4" type="video/mp4" />
+    Tarayıcınız video etiketini desteklemiyor.
+  </video>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Video Örneği</title>
+</head>
+<body>
+
+  <h1>Tekrar böyle mutlu olman dileğiyle. Sonu boş ver 😂</h1>
+
+  <video width="640" height="360" controls>
+    <source src="siir4.mp4" type="video/mp4" />
+    Tarayıcınız video etiketini desteklemiyor.
+  </video>
+
+</body>
+</html>
+    
+</div>
+
+<!-- Şiir Videolarını Tıklayınca Başlat/Durdur -->
+<script>
+    function togglePlay(videoId) {
+        let video = document.getElementById(videoId);
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    document.getElementById("siir1").addEventListener("click", function() {
+        togglePlay("siir1");
+    });
+
+    document.getElementById("siir2").addEventListener("click", function() {
+        togglePlay("siir2");
+    });
+</script>
+<h1> Son Bir Mesaj</h1>
+<p>Seninle 3 Aydır sevgiliyiz, 27 Nisandan beri konuşuyoruz.<br>
+Arada küslükler oldu, sıkkınlıklar oldu, soğumalar oldu. Ama senden hiçbir zaman vazgeçmedim çünkü ben sende gelecek gördüm.<br>
+İlk aşkım oldun, beraber ilkleri yaşadık, bu kısa sürede güzel vakitler geçirdik.<br>
+Bu son olayda seni çok kırdım, üzdüm. Belki de ben bunu yazarken ilişkiyi bitirmeyi düşündün, bilmiyorum. Ama seni her şeyinle çok sevdim
+Hiçbir zaman bir yerinden tiksinmedim çünkü sana aşıktım, hem de delicesine. Maalesef ağzımdan çıktı, kaçtı yanlış anlaşıldı 
+ama anlattım, en içten söylemlerimle hemde bu süreç içerisinde yaptığım en büyük hata olabilir. Affetmen için çabaladım
+Belki işe yaramadı belki yaradı bilmiyorum, Dört dörtlük insanlar değiliz maalesef, önemli olan bu küskünlüğü atlatıp devam etmek. 
+Zor olacak, çünkü annen de öğrendi. Ama iyi yönden bakacak olursak biz iyi olursak, annen de mutlu olduğunu görürse güzel günler bizi bekleyebilir.
+Öncelik bizim iyi olmamız, her gün dualarımdasın. Biliyorum, biliyorsun. Kafan karışık farkındayım ama ben iyi gelmesi için burada elimden geleni yapıyorum.
+İyi ol yeter ki. Geçecek, vallahi de geçiyor. Çok zor günler geçiriyoruz. Şu an geleceği göremiyorsun, biliyorum. Sen iyi ol gelceği de beraber karar veririz
+bilmiyorum belki de bitirmek istiyorsun. Ne kadar istemesem de bu durumu... Sadece benim düşüncem şu ki: Her ilişkide çıkışlar, inişler olur.
+Biz de yükseleceğiz ve mutlu olacağımızdır. Ben her zaman umutlu yaklaşıyorum, sen hâlâ benim umudumsun, belki bana olan güvenin gitti.
+Ama tekrar kazanacağız. Bilmiyorsun yine, görüyorum. Ben biliyorum. Sadece zamana ihtiyaç oluyor bazen sadece zaman... 
+Bu samimi ve içten gelen notumu buraya kadar okuduğun için teşekkür ederim, Ağzımdan çıkan bu söz için tekrar özür dilerim.
+Hatalıyım. Umarım zamanla daha iyi olursun. Ağlamanı artık istemiyorum. 
+Ağlama Zehra... 
+
+Bu Web sitesi sonsuza kadar duracak şekilde oluşturuldu. Belki gelecekte beraber bakmaya geliriz. Kim bilebilir..?
+
+ -Sevgilin, Anıl Osman ARI
+<main>
+
+</main> 💜</p>
