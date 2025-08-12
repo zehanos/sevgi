@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Sevgilim İçin Şiirler 💖</title>
+<style>
+    body {
+        margin: 0;
+        background: linear-gradient(to bottom, #000000, #330033);
+        color: white;
+        font-family: 'Georgia', serif;
+        text-align: center;
+        padding: 20px;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        color: #ff99ff;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .poem {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 2px solid #ff99ff;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        text-align: left;
+        line-height: 1.6;
+        font-size: 1.2em;
+        white-space: pre-line;
+        box-shadow: 0 0 20px rgba(255, 153, 255, 0.5);
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #ff99ff;
+        color: black;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    a:hover {
+        background-color: #ff66cc;
+        color: white;
+    }
+
+    /* Kalp animasyonu */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: pink;
+        font-size: 20px;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h1>💌 Sevgilim İçin Şiirler 💌</h1>
+
+<div class="poem">
+Sevgilim, bir günün ortası şimdi
+Taşıtlar hızla gelip geçiyor, her yer kalabalık,
+Ben seni düşünüyorum bir bodrum kahvesinde
+Uzat bana uzat ellerini
+İzinli askerler görüyorum, kırıtarak yürüyen işçi kızlar
+İstanbul her günkü yaşantısı içinde, uğultulu,
+Güvercinler güneşten bir sessizliği biriktiriyor
+
+Ben seni düşünüyorum seni
+Hani tıpkı o ilk günlerdeki gibi
+Kalbim diyorum kalbim
+Daha dün tezgâhtan çıkmış bir su sayacı gibi
+Aşkı anılar besliyor düşler kadar
+Bu yüzden diyorum ki aşk eskidikçe aşktır
+Sevgi eskidikçe sevgi.
+
+Günümüz ekmeğimiz, türkümüz Çoluğumuz çocuğumuz
+Binalar yan yana yükselip gidiyor
+Vapurların ağzı köpük içinde
+Uzaklarda ne kapılar açılıyor
+Tirenin biri bir istasyona varıyor
+Ordan çıkıyor biri.
+
+Her şey biliyor her şey
+Sen biliyor musun bakalım
+Seni nice sevdiğimi?
+Üstüne titrrediğimi?
+
+Geldiğimi?
+Gittiğimi
+
+Hadi!
+</div>
+
+<div class="poem">
+Sevgilim ben şimdi büyük bir kentte seni düşünmekteyim
+Elimde uçuk mavi bir kalem cebimde iki paket sigara
+Hayatımız geçiyor gözlerimin önünden
+Çıkıp gitmelerimiz, su içmelerimiz, öpüştüklerimiz
+"Ağlarım aklıma geldikçe gülüştüklerimiz".
+Çiçekler, çiçekler, su verdim bu sabah çiçeklere
+O gülün yüzü gülmüyor sensiz
+O köklensin diye pencerede suya koyduğun devetabanı
+Hepten hüzünlü bu günlerde
+Gür ve çoşkun bir günışığı dadanmış pencereye
+Masada tabaklar neşesiz
+Koridor ıssız
+Banyoda havlular yalnız
+Mutfak dersen - derbeder ve pis
+Çiti orda duruyor, ekmek kutusu boş
+Vantilatör soluksuz
+Halılar tozlu
+Giysilerim gardropda ve şurda burda
+Memo'nun oyuncak sepeti uykularda
+Mavi gece lambası hevessiz
+Kapı diyor ki açın beni kapayın beni
+Perdeler gömlek değiştiren yılanlar gibi
+Radyo desen sessiz
+Tabure sandalyalardan çekiniyor
+Küçük oda karanlık ve ıssız
+Her şey seni bekliyor her şey gelmeni
+İçeri girmeni
+Senin elinin değmesini
+Gözünün dokunmasını
+Ve her şey tekrarlıyor
+Seni nice sevdiğimi
+</div>
+
+<a href="index.html">⬅ Ana Sayfaya Dön</a>
+
+<script>
+    // Kalpler yağdırma
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>

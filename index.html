@@ -121,9 +121,83 @@
         background-color: #ff66cc;
         color: white;
     }
+
+    /* Kalp yağmuru */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: pink;
+        font-size: 20px;
+        animation: fall linear forwards;
+        z-index: 9999;
+    }
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
 </style>
 </head>
 <body>
+
+  <!-- Müzik Kontrol Butonu -->
+<div style="margin-top:20px;">
+    <button id="musicBtn" style="
+        background-color:#ff99ff;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        font-size:16px;
+        border-radius:25px;
+        cursor:pointer;
+        box-shadow:0 0 10px #ff66cc;
+    ">🎵 Müziği Başlat</button>
+    <audio id="bgMusic" loop>
+        <source src="Affet.mp3" type="audio/mpeg">
+        Tarayıcınız ses dosyasını desteklemiyor.
+    </audio>
+</div>
+
+
+<!-- Üst Yazı Efekti -->
+<h2 id="typedText" style="color:#ff99ff; font-size:1.8em; margin-top:20px;"></h2>
+
+<script>
+const messages = ["Seni Seviyorum 💖", "Beni Affet 🌸", "Her Zaman Yanındayım 💫"];
+let indexMsg = 0, charIndex = 0;
+const textElement = document.getElementById("typedText");
+
+function type() {
+    if (charIndex < messages[indexMsg].length) {
+        textElement.textContent += messages[indexMsg].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+    } else {
+        setTimeout(erase, 2000);
+    }
+}
+function erase() {
+    if (charIndex > 0) {
+        textElement.textContent = messages[indexMsg].substring(0, charIndex-1);
+        charIndex--;
+        setTimeout(erase, 50);
+    } else {
+        indexMsg = (indexMsg + 1) % messages.length;
+        setTimeout(type, 500);
+    }
+}
+type();
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 5000);
+}
+setInterval(createHeart, 300);
+</script>
 
 <!-- Giriş Mesajı -->
 <h1>💖 Sevgilim, Sen Benim Her Şeyimsin 💖</h1>
@@ -135,16 +209,15 @@ Gözlerindeki ışık, hayatımın en güzel rengi. 💜</p>
 <p>Kalbim, ruhum, tüm benliğim sana ait...<br>
 Her nefesimde adını fısıldıyor içim.<br>
 Bir daha asla seni üzmek istemem.<br>
-Sonsuza kadar seninle olmak istiyorum... 🌸</p>
+Sonsuza kadar seninle olmak istiyorum... 🌸
+</p>
 
-<!-- Müzik butonu -->
-<button class="music-btn" onclick="playMusic()">🎵 Romantik Müziği Çal</button>
-<audio id="bg-music" src="muzik.mp3"></audio>
-
-<!-- Albüm mesajı -->
+<!-- Fotoğraf Albümü -->
+<div class="slideshow-container">
+    <!-- Albüm mesajı -->
 <div class="album-message">
     Seni hâlâ çok seviyorum, inşallah bu zor günleri atlatırız ve tekrardan mutlu, huzurlu günlerimize döneriz.<br>
-    Ben hâlâ umutluyum...
+    Ben hâlâ umutluyum... Fotoğrafı geçme tuşu aşağıda kalabilir oradan sağ, sol yapabilirsin. küçük fotoğrafların üstüne tıklamayı da unutma.
 </div>
 
 <!-- Fotoğraf Albümü -->
@@ -568,9 +641,57 @@ Sonsuza kadar seninle olmak istiyorum... 🌸</p>
 
 </body>
 </html>
+
+    <!-- İleri/Geri butonları -->
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+    // Müzik oynatma
+    function playMusic() {
+        document.getElementById("bg-music").play();
+    }
+
+    // Albüm slayt gösterisi
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
+
+<!-- Şiir Sayfası Butonu -->
+<div style="margin-top:40px; text-align:center;">
+    <a href="siir.html" style="
+        background-color:#ff66cc;
+        color:white;
+        padding:15px 25px;
+        border-radius:30px;
+        font-size:1.2em;
+        text-decoration:none;
+        box-shadow:0 0 15px #ff99ff;
+    ">📜 Sevgilim Tıkla</a>
+</div>
+
+</body>
+</html>
+
 <!-- Şiirler Bölümü -->
 <div style="text-align:center; margin-top: 50px;">
-    <h2>🎙️ Senin İçin Okuduğum Şiirler</h2>
+    <h2>🎙️ Senin İçin  Şiirler</h2>
 
     <!-- 1. Şiir -->
     <div style="margin-bottom: 20px;">
@@ -624,7 +745,44 @@ Sonsuza kadar seninle olmak istiyorum... 🌸</p>
   </video>
 
 </body>
-</html>
+
+
+<div style="margin-top:40px;">
+    <a href="siir.html" style="
+        background-color:#ff99ff;
+        color:white;
+        padding:12px 25px;
+        text-decoration:none;
+        border-radius:25px;
+        font-size:16px;
+        box-shadow:0 0 10px #ff66cc;
+    ">📜 Sevgilim Tıkla</a>
+</div>
+
+<!-- Sesli Not Butonu -->
+<div style="margin-top:30px;">
+    <button id="sesliNotBtn" style="
+        background-color:#ff99ff;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        font-size:16px;
+        border-radius:25px;
+        cursor:pointer;
+        box-shadow:0 0 10px #ff66cc;
+    ">
+        🎤 Sesli Notu Dinle
+    </button>
+    <audio id="sesliNot" src="sesli_not.mp3"></audio>
+</div>
+
+<script>
+    document.getElementById("sesliNotBtn").addEventListener("click", function() {
+        var audio = document.getElementById("sesliNot");
+        audio.play();
+    });
+</script>
+
     
 </div>
 
@@ -647,27 +805,77 @@ Sonsuza kadar seninle olmak istiyorum... 🌸</p>
         togglePlay("siir2");
     });
 </script>
+
 <h1> Son Bir Mesaj</h1>
-<p>Seninle 3 Aydır sevgiliyiz, 27 Nisandan beri konuşuyoruz.<br>
+
+<p>Seninle 3 Aydır sevgiliyiz, 30 Nisandan beri konuşuyoruz. 19 Mayıs 2. buluşmamız: Çok heyecanlıydım ama senin yanında o kadar rahat etmiştim ki, hiç yabancılık çekmemiştim o günden sonra sana daha çok alışmıştım. O kadar güzel ve eğlenceli bir gündü ki o ilk heyecan hâlâ aklmda.
+27 Mayıs beni ilk ısırdığın zaman ve ilk kafe buluşmamız. Heyecanlı ama çok rahattım. Isıracağını da hiç düşünmemiştim aslında. Ama seninle o da çok heyecanlı ve güzel günlerdi. Seni çok özledim, ısırmanı da çok özledim.
+29 Mayıs hazırlıksız yakalandığım zaman, o zaman da senle buluşmak istiyordum ama sen çıkmayacağını söylemiştin. Ben de eşofmanla gitmiştim. Sonra sabah konuştuğumuzda arabadaydım bir daha eve çıkmadım. Zaten tek dersim var diye çıkmıştım... Bana yemek yapmıştın Çiğ Köften çok güzeldi, yaptığın her yemek çok güzeldi ve hepsini bitirmiştim. 
+Haziran ayı ise bizim için sevgiliğe başlangıç oldu, O zilli var ya o zilli bizim sevgili olmamıza nasip oldu. Belki kırıldın ama sonunda seni aldım. Haziran ayımı ve ondan sonraki zamanımı güzelleştirdin. 2 Haziran sevgili olduk sonraki gün ise
+Tostçu Yaşar ve senin Mezuniyet elbiseni aldık. O gün de bana ilk sarıldığın ve canımın en çok acıdığı ısırdığın gün idi. El ele de o gün tutmuştuk o kadar heyecanlanmıştım ki, elime sevdiğim tutuyordu. Çok güzel bir gündü, diğer günler gibi.
+4 Haziran da senin Mezuniyet Günü'ndü damat olarak sana eşlik etmek istemiştim. Yanına çok gelmek istemiştim o gün, beraber geçsin diye mezuniyetin. Sonradan buluştuk daha verimli geçirmek istemiştim çünkü sonra gidecektin...<br>
+14 Haziran sen tekrardan geldin, o günü iple çekiyordum, internetten de tam senin geleceğin güne hediyeler bakıyordum. Evvel Zaman'da belki malamat olduk ama eğlendik, seninle güzelleşti. Ziraat'e çıktık-burada iban atmıyor oto :D -
+En azından denedik, abin aradı anahtar için, ağrın da vardı seni de düşünüyordum. Ama tek elimden gelen senin iyi olmandı.17 Haziran Sana aldığım Angel hediyesini Fenerdeki Sosyal Tesis'te vermiştim.
+O gün Anadolu Ünisi ile Erzurum Ünisini karıştırmıştın ÖZ DİNOM Benim. Çok da dalga geçememiştim. 18 Haziran o kafenin adı bir türlü aklıma gelmiyor carpediem miydi neydi. Manzarası benim sevgilim kadar güzel olmasa da güzeldi, hele asansör fotoğraflarımız çok tatlıydı...
+Oradan kalkarak yürüyerek okula gitmiştik diye hatırlıyorum, yürümek de çok güzeldi seninle... Annen aramıştı komik bir andı. 20 Haziran benim salaklığımdan kaldığım bütüne girdiğim zaman idi sonrasında Burger'da seninle buluştum, çok fotoğraf ekleyemedim keşke bu işte daha iyi olabilseydim.
+Sen yemeğini yine yiyememiştin, ben de seni izlemekten... 24 Haziran Trabzon, o mükemmel gün ilk kez seninle bir şehir dışına çıkmıştık ve Ömer'le tanışacaktın. Ben de heyecanlıydım. Ama biliyordum seveceğini,
+Sadece korkuyordum kötü geçireceksin diye hem ağrın hem de özel gününden dolayı. Yollar daha iyi olsaydı çok iyi yolculuk olacaktı. Ben orada da yardım etmeye çalıştım, ağırmasın, iyi olsun sevgilim diye.
+28 Haziran gittiğin o gün, o kara gün... Sen gelmemi istemedin. Ama ben gelecektim, kafaya koymuştum. Son anda arabada işler çıkmıştı ama Pederi hemen bırakıp son gazla, kaçıracağım, göremeyeceğim korkusu ile basmıştım.
+Yetişmiştim de. Görmüştüm sevdiğimi. O zor günden önce söylemiştik. Söz vermiştik... Beraber atlatacağız, seni bırakmayacağım, zor günler de geçse bırakmayacağım diye. Unuttuklarım vardır affola. Tamamiyle içten yazdığım bir bir anı defteri gibi içimden gelenleri yazıyorum.
+7 Temmuz ise sana aşkım kelimesini, cümlesini açıklamıştım. İçimden gelmişti söylemek. Ve geldi de söyledim Vallahi. Ben seni günlük sevmedim Zehram, ömürlük sevdim, sen de gelecek gördüm. Bana çok kırgınsın, geçmesi için her şeyi yapıyorum. Keşke yanında olabilsem, gelmemi istemedin
+gelmedim. Ama seni çok seviyorum. Sen bitirmediğin sürece, her zaman umut vardır. Yeter ki iyi ol. Sen gülünce, olumlu bir şey yapınca ben çok mutlu oluyorum. Sen emoji atınca bile. Soğuk davranınca kötü oluyorum, oluyoruz. Senden beni sevdiğine dair mesaj o kadar duymak istiyorum ki, o kadar güç verir ki bana o...
 Arada küslükler oldu, sıkkınlıklar oldu, soğumalar oldu. Ama senden hiçbir zaman vazgeçmedim çünkü ben sende gelecek gördüm.<br>
-İlk aşkım oldun, beraber ilkleri yaşadık, bu kısa sürede güzel vakitler geçirdik.<br>
+İlk aşkım oldun, beraber ilkleri yaşadık, bu kısa sürede güzel vakitler geçirdik. Ben sana hayran oldum, aşık oldum, aşkı senle keşfettim...<br>
 Bu son olayda seni çok kırdım, üzdüm. Belki de ben bunu yazarken ilişkiyi bitirmeyi düşündün, bilmiyorum. Ama seni her şeyinle çok sevdim
-Hiçbir zaman bir yerinden tiksinmedim çünkü sana aşıktım, hem de delicesine. Maalesef ağzımdan çıktı, kaçtı yanlış anlaşıldı 
-ama anlattım, en içten söylemlerimle hemde bu süreç içerisinde yaptığım en büyük hata olabilir. Affetmen için çabaladım
+Hiçbir zaman bir yerinden tiksinmedim çünkü sana aşıktım, hem de delicesine.
+ Maalesef ağzımdan çıktı, kaçtı yanlış anlaşıldı
+ama anlattım, en içten söylemlerimle hemde bu süreç içerisinde yaptığım en büyük hata. Affetmen için çabaladım
 Belki işe yaramadı belki yaradı bilmiyorum, Dört dörtlük insanlar değiliz maalesef, önemli olan bu küskünlüğü atlatıp devam etmek. 
 Zor olacak, çünkü annen de öğrendi. Ama iyi yönden bakacak olursak biz iyi olursak, annen de mutlu olduğunu görürse güzel günler bizi bekleyebilir.
 Öncelik bizim iyi olmamız, her gün dualarımdasın. Biliyorum, biliyorsun. Kafan karışık farkındayım ama ben iyi gelmesi için burada elimden geleni yapıyorum.
-İyi ol yeter ki. Geçecek, vallahi de geçiyor. Çok zor günler geçiriyoruz. Şu an geleceği göremiyorsun, biliyorum. Sen iyi ol gelceği de beraber karar veririz
+İyi ol yeter ki. Geçecek, vallahi de geçiyor. Çok zor günler geçiriyoruz. Şu an geleceği göremiyorsun, biliyorum. Sen iyi ol geleceği de beraber karar veririz
 bilmiyorum belki de bitirmek istiyorsun. Ne kadar istemesem de bu durumu... Sadece benim düşüncem şu ki: Her ilişkide çıkışlar, inişler olur.
 Biz de yükseleceğiz ve mutlu olacağımızdır. Ben her zaman umutlu yaklaşıyorum, sen hâlâ benim umudumsun, belki bana olan güvenin gitti.
 Ama tekrar kazanacağız. Bilmiyorsun yine, görüyorum. Ben biliyorum. Sadece zamana ihtiyaç oluyor bazen sadece zaman... 
 Bu samimi ve içten gelen notumu buraya kadar okuduğun için teşekkür ederim, Ağzımdan çıkan bu söz için tekrar özür dilerim.
 Hatalıyım. Umarım zamanla daha iyi olursun. Ağlamanı artık istemiyorum. 
-Ağlama Zehra... 
+Ağlama Zehra, beraber mutluluğa gidelim, yine mutlu olalım. Evet, şu an zor. Ama bunu da aşacağımızı biliyorum. Ben yapacağım, halledeceğim! Sev yeter...
 
-Bu Web sitesi sonsuza kadar duracak şekilde oluşturuldu. Belki gelecekte beraber bakmaya geliriz. Kim bilebilir..?
+Sen gülünce, benim içimdeki bütün fırtınalar diner. O yüzden hep gülmeni istiyorum. Sağlıcakla ve sevgiyle kal...
+
 
  -Sevgilin, Anıl Osman ARI
 <main>
 
-</main> 💜</p>
+</main> 💙</p>
+
+
+<script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    btn.addEventListener("click", function() {
+        if (music.paused) {
+            music.play();
+            btn.textContent = "⏸ Müziği Durdur";
+        } else {
+            music.pause();
+            btn.textContent = "🎵 Müziği Başlat";
+        }
+    });
+</script>
+</html>
+<script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    btn.addEventListener("click", function() {
+        if (music.paused) {
+            music.play();
+            btn.textContent = "⏸ Müziği Durdur";
+        } else {
+            music.pause();
+            btn.textContent = "🎵 Müziği Başlat";
+        }
+    });
+</script>
